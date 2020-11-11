@@ -62,7 +62,7 @@ Server request:
 ```
 $ curl -X POST \
   http://localhost:5000/recommend \
-  -H 'content-type: multipart/form-data'
+  -H 'content-type: multipart/form-data' \
   -F 'book=Great gatsby'
 ```
 

@@ -88,10 +88,10 @@ def make_recommendation(model_knn, data, mapper, fav_book, all_books, n_recommen
 def hello():
     return "Server is up and running"
 
-@server.route("/recommend")
+@server.route("/recommend", methods=['POST'])
 def recommend():
-    if 'book' in request.headers:
-        b = request.headers['book']
+    if 'book' in request.form:
+        b = request.form['book']
         rec = make_recommendation(model_knn, book_user_mat_sparse, books_ix, b, relevant_books, 10)
         return jsonify(rec)
 
