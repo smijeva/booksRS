@@ -30,7 +30,7 @@ In the first architecture, I assume some already well-established running web ap
 
 ![Simple model](https://github.com/smijeva/booksRS/blob/master/simple_recommender.png?raw=true)
 
-The second architecture is a recommender which is web-application(s) independent and therefore is able to gather data from multiple sources (web applications). The databases for books and ratings are possibly also independent, as they might be optimized differently (ratings database would require more frequent write operations). The recommender provides two types of API, one which is stable and second one which allows RS's A/B testing. 
+The second architecture is a recommender which is web-application(s)-independent and therefore is able to gather data from multiple sources (web applications). The databases for books and ratings are possibly also independent, as they might be optimized differently (ratings database would require more frequent write operations). The recommender provides two types of API, one which is stable and second one which allows RS's A/B testing. 
 
 ![Complex model](https://github.com/smijeva/booksRS/blob/master/complex_recommender.png?raw=true)
 
@@ -42,7 +42,7 @@ The solution is also dockerized.
 
 The results is a very simple HTTP server accepting requests on two endpoints:
 - `/` root endpoint for "is alive" request
-- `/recommend` endpoint which accepts `book` as a body parameter and returns object containing name of the found book and recommendations for this book
+- `/recommend` endpoint which accepts `book`'s name as a form parameter and returns object containing the title of the found book and recommendations for this book
 
 ### How to run
 
@@ -51,15 +51,15 @@ The results is a very simple HTTP server accepting requests on two endpoints:
 - [book reviews datasets](https://www.kaggle.com/ruchi798/bookcrossing-dataset?select=Book+reviews) downloaded and unziped in the same directory as the cloned repo 
 - installed docker
 
-**How To build and start the server:**
-```
+**How to build and start the server:**
+```shell
 $ docker build -t booksRS .
 $ docker run -d -p 5000:5000 booksRS
 ```
 **Example of running server usage:**
 
 Server request:
-```
+```shell
 $ curl -X POST \
   http://localhost:5000/recommend \
   -H 'content-type: multipart/form-data' \
@@ -67,7 +67,7 @@ $ curl -X POST \
 ```
 
 Server response:
-```
+```json
 {
     "book_title": "The Great Gatsby",
     "match_with_query": 86,
