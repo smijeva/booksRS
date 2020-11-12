@@ -21,7 +21,7 @@ To sum up I:
 Comments on my solution:
 - I've spent some rather inadequate amount of time on solving a "KeyError" caused by ISBN keys present in ratings DS and not in books DS
 - The performence of the recommender is unmeasured and results seems rather explorative than exploitative (for lord of the rings in didn't get any magic-fantasy books recommendations)
-- There is no solution to the cold-start problem
+- The solution does not solve potential problem of recommending new books which wouldn't have rating at first (cold start problem)
 - Using fuzzy matcher was convinient choice for the recommender testing
 
 ## Part 2.i
