@@ -21,22 +21,21 @@ To sum up I:
 Comments on my solution:
 - I've spent some rather inadequate amount of time on solving a "KeyError" caused by ISBN keys present in ratings DS and not in books DS
 - The performence of the recommender is unmeasured and results seems rather explorative than exploitative (for lord of the rings in didn't get any magic-fantasy books recommendations)
-- The solution does not solve potential problem of recommending new books which wouldn't have rating at first (cold start problem)
+- The solution does not solve potential problem of recommending new books which wouldn't have rating at first (cold-start problem)
 - Using fuzzy matcher was convinient choice for the recommender testing
 
 ## Part 2.i
 
-In the first architecture, I assume some already well-established running web application with 4 layers (DB, service, API, FE) where is alongside added a very simple recommender-service which uses the already exisitng database and maintains the ML model
+In the first architecture, I assume some already well-established running web application with 4 layers (DB, service, API, FE) where is alongside added some recommender service which uses the already exisitng database and maintains the ML model.
 
 ![Simple model](https://github.com/smijeva/booksRS/blob/master/simple_recommender.png?raw=true)
 
-The second architecture is a recommender which is web-application(s)-independent and therefore is able to gather data from multiple sources (web applications). The databases for books and ratings are possibly also independent, as they might be optimized differently (ratings database would require more frequent write operations). The recommender provides two types of API, one which is stable and second one which allows RS's A/B testing. 
+The second architecture is a recommender which is web-application(s)-independent and therefore is able to gather data from multiple sources (web applications). The databases for books and ratings are also independent, as there might be need to optimize them differently (e.g. ratings database would require more frequent write operations). The recommender provides two types of API, one which is stable and second one which allows RS's A/B testing. 
 
 ![Complex model](https://github.com/smijeva/booksRS/blob/master/complex_recommender.png?raw=true)
 
 ## Part 2.ii
 
-Disclaimer: this part of solution was made as time efficient as possible
 The core of this part is file [server.py](https://github.com/smijeva/booksRS/blob/master/server.py) where is just code necessary to run the model copied from the Part 1 and a very simple Flask server.
 The solution is also dockerized.
 
