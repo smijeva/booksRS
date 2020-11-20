@@ -52,8 +52,8 @@ The results is a very simple HTTP server accepting requests on two endpoints:
 
 **How to build and start the server:**
 ```shell
-$ docker build -t booksRS .
-$ docker run -d -p 5000:5000 booksRS
+$ docker build -t booksrs .
+$ docker run -d -p 5000:5000 booksrs
 ```
 **Example of running server usage:**
 
